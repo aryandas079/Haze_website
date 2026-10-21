@@ -14,6 +14,7 @@ import {
   Smartphone,
   ArrowUp,
   X,
+  ChevronDown,
 } from 'lucide-react';
 import { FOOTER_SECTIONS } from './data/legalContent';
 import { LegalDocumentModal } from './components/LegalDocumentModal';
@@ -66,6 +67,86 @@ const CORE_FEATURES = [
       'Built for one-handed reachability with a distraction-free viewport, bottom-anchored hybrid local/live autocomplete omnibox, lockscreen Notification Media Controller, floating mini-player, and true OLED dark mode.',
     specs: ['Bottom-Anchored UI', 'MediaSession Center', 'True OLED Dark'],
   },
+];
+
+type FaqCategory = 'All' | 'Security' | 'Compatibility' | 'Roadmap';
+
+interface FaqItem {
+  id: string;
+  category: Exclude<FaqCategory, 'All'>;
+  question: string;
+  answer: string;
+  detail: string;
+}
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    id: 'faq-security-shield',
+    category: 'Security',
+    question:
+      'How does the C++17 Privacy Shield protect against tracking and fingerprinting?',
+    answer:
+      'Haze intercepts ad networks, tracking beacons, and telemetry scripts at the native layer via libhazeshield.so before network packets consume memory or mobile data. An in-memory LRU cache delivers O(1) sub-millisecond lookups while declarative CSS rules collapse ad containers inside Blink with zero JavaScript overhead.',
+    detail:
+      'Also includes Canvas/WebGL fingerprint masking, bounce-tracker unraveling, automatic URL query sanitization (utm_*, fbclid, gclid), and WebRTC LAN IP leak protection.',
+  },
+  {
+    id: 'faq-security-vault',
+    category: 'Security',
+    question:
+      'How are saved passwords and browsing data secured on-device?',
+    answer:
+      'All credentials stored in HazePasswordVault are encrypted using hardware-backed AES-256-GCM keys generated and isolated inside your device AndroidKeyStore (TEE / StrongBox). Viewing or exporting passwords to CSV requires biometric verification (Fingerprint, Face Unlock, or Device PIN).',
+    detail:
+      'Haze contains zero first-party telemetry daemons and zero analytics SDKs. Browsing history and bookmarks stay strictly inside the local SQLite sandbox (/data/user/0/com.aryandas.haze/databases/).',
+  },
+  {
+    id: 'faq-compat-engine',
+    category: 'Compatibility',
+    question:
+      'How does Haze differ from standard Android WebView wrapper browsers?',
+    answer:
+      'Unlike lightweight wrapper browsers that depend on the host operating system WebView, Haze ships with its own self-contained, custom-compiled Native Chromium Engine (libcontent_shell_content_view.so) supporting both 64-bit (arm64-v8a) and 32-bit (armeabi-v7a) ARM devices.',
+    detail:
+      'Includes dedicated V8 heap snapshots, ICU internationalization tables, 394 compiled Chromium Java archives via JNI_Zero dispatch, and native HTTP/3 & QUIC networking.',
+  },
+  {
+    id: 'faq-compat-media',
+    category: 'Compatibility',
+    question:
+      'Does Haze support background media playback, lockscreen controls, and complex web apps?',
+    answer:
+      'Yes. Haze integrates a foreground Android MediaSession controller (HazeMediaNotificationService) directly into the system Notification Shade and Lockscreen with track metadata, album artwork, and interactive scrubber controls, alongside a draggable in-app Picture-in-Picture mini-player.',
+    detail:
+      'Verified across the top 50 global web destinations—including YouTube, Spotify, Twitch, Discord, ChatGPT, Gemini, Canva, and GitHub—with event-driven 60 FPS media supervision.',
+  },
+  {
+    id: 'faq-roadmap-upcoming',
+    category: 'Roadmap',
+    question:
+      'What features are planned next on the Haze Browser roadmap?',
+    answer:
+      'Following the completion of the Dual-ABI Native Chromium runtime, C++17 Privacy Shield, Notification Media Controller, Hardware Password Vault, and Multi-Threaded Download Engine, active development is focused on four upcoming milestones:',
+    detail:
+      '01. DNS-over-HTTPS (DoH) with NextDNS & Cloudflare presets · 02. Experimental WebExtension (MV3) compatibility layer · 03. Tab Groups and Collections · 04. Built-in PDF Annotator & Offline Reader Mode.',
+  },
+  {
+    id: 'faq-roadmap-platforms',
+    category: 'Roadmap',
+    question:
+      'Which Android versions and device architectures are supported?',
+    answer:
+      'Haze Browser supports Android 7.0 Nougat through Android 15+ (Min SDK 24, Target SDK 37) and provides both per-ABI split APKs and a single Universal Release APK covering 64-bit (arm64-v8a) and 32-bit (armeabi-v7a) processors.',
+    detail:
+      'Released as free, open-source software under the Apache License, Version 2.0.',
+  },
+];
+
+const FAQ_CATEGORIES: FaqCategory[] = [
+  'All',
+  'Security',
+  'Compatibility',
+  'Roadmap',
 ];
 
 const STAGGER_DELAY_CLASSES = [
@@ -123,6 +204,10 @@ function HazeLogo({ className = 'w-8 h-8' }: { className?: string }) {
 export default function App() {
   const [activeDocId, setActiveDocId] = useState<string | null>(null);
   const [showPlayStoreNotice, setShowPlayStoreNotice] = useState(false);
+  const [faqCategory, setFaqCategory] = useState<FaqCategory>('All');
+  const [openFaqIds, setOpenFaqIds] = useState<string[]>([
+    'faq-security-shield',
+  ]);
   const [footerVisible, setFooterVisible] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isDark, setIsDark] = useState<boolean>(() => {
@@ -205,6 +290,32 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const filteredFaqs =
+    faqCategory === 'All'
+      ? FAQ_ITEMS
+      : FAQ_ITEMS.filter((item) => item.category === faqCategory);
+
+  const toggleFaqItem = (id: string) => {
+    setOpenFaqIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
+  const allFilteredOpen =
+    filteredFaqs.length > 0 &&
+    filteredFaqs.every((item) => openFaqIds.includes(item.id));
+
+  const handleToggleAllFaqs = () => {
+    if (allFilteredOpen) {
+      setOpenFaqIds((prev) =>
+        prev.filter((id) => !filteredFaqs.some((f) => f.id === id))
+      );
+    } else {
+      const idsToAdd = filteredFaqs.map((f) => f.id);
+      setOpenFaqIds((prev) => Array.from(new Set([...prev, ...idsToAdd])));
+    }
+  };
+
   const revealBase =
     'transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0';
   const revealState = footerVisible
@@ -254,7 +365,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Content Area: Centered Hero Section + 3-Column Features Section */}
+      {/* Main Content Area: Centered Hero + 3-Column Features + FAQ Accordion */}
       <main id="top" className="flex-1 w-full">
         {/* Hero Section */}
         <section
@@ -315,7 +426,7 @@ export default function App() {
         {/* Responsive 3-Column Features Section */}
         <section
           aria-labelledby="features-heading"
-          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 pb-20 sm:pb-28"
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 pb-16 sm:pb-24"
         >
           <div className="border-t border-neutral-200 dark:border-neutral-800 pt-12 sm:pt-16">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-12">
@@ -377,6 +488,128 @@ export default function App() {
                   </article>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Frequently Asked Questions (FAQ) Section */}
+        <section
+          aria-labelledby="faq-heading"
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 pb-20 sm:pb-28"
+        >
+          <div className="border-t border-neutral-200 dark:border-neutral-800 pt-12 sm:pt-16">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+              {/* Left Column: Title, Context & Interactive Topic Filter */}
+              <div className="lg:col-span-4 space-y-6">
+                <div>
+                  <h2
+                    id="faq-heading"
+                    className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white"
+                  >
+                    Frequently Asked Questions
+                  </h2>
+                  <p className="mt-2.5 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                    Technical answers covering Haze Browser security architecture, website compatibility, and upcoming engineering milestones.
+                  </p>
+                </div>
+
+                {/* Interactive Category Filter Controls */}
+                <div className="space-y-3">
+                  <div
+                    role="group"
+                    aria-label="Filter questions by topic"
+                    className="inline-flex flex-wrap items-center gap-1 p-1 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800"
+                  >
+                    {FAQ_CATEGORIES.map((category) => {
+                      const active = faqCategory === category;
+                      return (
+                        <button
+                          key={category}
+                          type="button"
+                          onClick={() => setFaqCategory(category)}
+                          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+                            active
+                              ? 'bg-white dark:bg-neutral-800 text-neutral-950 dark:text-white shadow-xs'
+                              : 'text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white'
+                          }`}
+                        >
+                          {category}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div>
+                    <button
+                      type="button"
+                      onClick={handleToggleAllFaqs}
+                      className="text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white underline underline-offset-4 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                    >
+                      {allFilteredOpen ? 'Collapse all questions' : 'Expand all questions'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Accordion List */}
+              <div className="lg:col-span-8 divide-y divide-neutral-200 dark:divide-neutral-800 border-y border-neutral-200 dark:border-neutral-800">
+                {filteredFaqs.map((item, idx) => {
+                  const isOpen = openFaqIds.includes(item.id);
+                  const panelId = `faq-panel-${item.id}`;
+                  const buttonId = `faq-trigger-${item.id}`;
+
+                  return (
+                    <div key={item.id} className="py-5 sm:py-6">
+                      <h3>
+                        <button
+                          id={buttonId}
+                          type="button"
+                          aria-expanded={isOpen}
+                          aria-controls={panelId}
+                          onClick={() => toggleFaqItem(item.id)}
+                          className="w-full flex items-start justify-between gap-6 text-left group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 dark:focus-visible:outline-white cursor-pointer"
+                        >
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-2 text-xs font-mono text-neutral-600 dark:text-neutral-400 tabular-nums">
+                              <span>0{idx + 1}</span>
+                              <span aria-hidden="true">·</span>
+                              <span>{item.category}</span>
+                            </div>
+                            <span className="block font-display text-base sm:text-lg font-semibold tracking-tight text-neutral-950 dark:text-white group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
+                              {item.question}
+                            </span>
+                          </div>
+
+                          <span className="mt-1 p-1.5 rounded-md border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors shrink-0">
+                            <ChevronDown
+                              className={`w-4 h-4 transition-transform duration-200 ease-out ${
+                                isOpen ? 'rotate-180' : 'rotate-0'
+                              }`}
+                              aria-hidden="true"
+                            />
+                          </span>
+                        </button>
+                      </h3>
+
+                      {isOpen && (
+                        <div
+                          id={panelId}
+                          role="region"
+                          aria-labelledby={buttonId}
+                          className="mt-4 pr-0 sm:pr-10 space-y-3"
+                        >
+                          <p className="text-sm sm:text-[15px] text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                            {item.answer}
+                          </p>
+                          <p className="text-xs sm:text-[13px] font-mono text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1">
+                            {item.detail}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
