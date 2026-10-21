@@ -1,0 +1,6 @@
+{
+  "name": "Haze",
+  "description": "Minimalist Haze brand page featuring a clean header, blank canvas, and comprehensive responsive legal, compliance, and miscellaneous footer directory.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
