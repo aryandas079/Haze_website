@@ -13,6 +13,7 @@ import {
   Zap,
   Smartphone,
   ArrowUp,
+  X,
 } from 'lucide-react';
 import { FOOTER_SECTIONS } from './data/legalContent';
 import { LegalDocumentModal } from './components/LegalDocumentModal';
@@ -110,7 +111,7 @@ function HazeLogo({ className = 'w-8 h-8' }: { className?: string }) {
 
   return (
     <img
-      src="/assets/aistudio/logo_20afc45f.png"
+      src={`${import.meta.env.BASE_URL}assets/aistudio/logo_20afc45f.png`}
       alt="Haze Browser Logo"
       referrerPolicy="no-referrer"
       onError={() => setImgError(true)}
@@ -121,6 +122,7 @@ function HazeLogo({ className = 'w-8 h-8' }: { className?: string }) {
 
 export default function App() {
   const [activeDocId, setActiveDocId] = useState<string | null>(null);
+  const [showPlayStoreNotice, setShowPlayStoreNotice] = useState(false);
   const [footerVisible, setFooterVisible] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isDark, setIsDark] = useState<boolean>(() => {
@@ -154,6 +156,7 @@ export default function App() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setActiveDocId(null);
+        setShowPlayStoreNotice(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -277,15 +280,14 @@ export default function App() {
 
           {/* Primary Call-to-Action & Source Link */}
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto">
-            <a
-              href="https://github.com/aryandas079/Haze/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-semibold rounded-lg bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 dark:focus-visible:outline-white whitespace-nowrap shrink-0"
+            <button
+              type="button"
+              onClick={() => setShowPlayStoreNotice(true)}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-semibold rounded-lg bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 dark:focus-visible:outline-white whitespace-nowrap shrink-0 cursor-pointer"
             >
               <Download className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>Download for Android</span>
-            </a>
+            </button>
 
             <a
               href="https://github.com/aryandas079/Haze"
@@ -487,7 +489,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setActiveDocId('terms-of-service')}
-                className="hover:text-neutral-950 dark:hover:text-white hover:underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 dark:focus-visible:outline-white whitespace-nowrap shrink-0 cursor-pointer"
+                className="hover:text-neutral-950 dark:hover:text-white hover:underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 whitespace-nowrap shrink-0 cursor-pointer"
               >
                 Terms of Service
               </button>
@@ -544,6 +546,56 @@ export default function App() {
         <ArrowUp className="w-4 h-4 shrink-0" aria-hidden="true" />
         <span className="hidden sm:inline">Top</span>
       </button>
+
+      {/* Play Store Availability Notice Modal */}
+      {showPlayStoreNotice && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/50 backdrop-blur-[2px]"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="play-store-modal-title"
+          onClick={() => setShowPlayStoreNotice(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 sm:p-8 shadow-2xl text-center relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowPlayStoreNotice(false)}
+              aria-label="Close notification"
+              className="absolute top-4 right-4 p-1.5 rounded-md text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="mb-5 flex justify-center">
+              <HazeLogo className="w-14 h-14" />
+            </div>
+
+            <h2
+              id="play-store-modal-title"
+              className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-neutral-950 dark:text-white"
+            >
+              Coming Soon to Google Play
+            </h2>
+
+            <p className="mt-3 text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              The app will be soon available on Play Store.
+            </p>
+
+            <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => setShowPlayStoreNotice(false)}
+                className="w-full sm:w-auto px-5 py-2.5 text-xs font-semibold rounded-lg bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Slide-Over Modal for Reading Legal, Governance & Trust Policies */}
       <LegalDocumentModal
