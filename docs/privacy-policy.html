@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Haze Browser (com.aryandas.haze)</title>
+    <meta
+      name="description"
+      content="Official Privacy Policy for Haze Browser (com.aryandas.haze), developed and maintained by Aryan Das. Discloses data collection, local storage, permissions, encryption, and user rights."
+    />
+    <link rel="icon" type="image/png" href="./assets/aistudio/logo_20afc45f.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-subtle: #fafafa;
+        --bg-card: #f8f8f8;
+        --text-primary: #0a0a0a;
+        --text-secondary: #363636;
+        --text-muted: #525252;
+        --border: #e5e5e5;
+        --btn-bg: #0a0a0a;
+        --btn-text: #ffffff;
+      }
+
+      html.dark {
+        --bg: #0a0a0a;
+        --bg-subtle: #121212;
+        --bg-card: #141414;
+        --text-primary: #ffffff;
+        --text-secondary: #d4d4d4;
+        --text-muted: #a3a3a3;
+        --border: #262626;
+        --btn-bg: #ffffff;
+        --btn-text: #0a0a0a;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.65;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1, h2, h3, .font-display {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      code, .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+        font-variant-numeric: tabular-nums;
+      }
+
+      code {
+        font-size: 0.84em;
+        padding: 0.1rem 0.35rem;
+        background-color: var(--bg-subtle);
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+      }
+
+      /* Header */
+      header {
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+        background-color: var(--bg);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .header-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        height: 4.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .brand-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: var(--text-primary);
+      }
+
+      .brand-logo {
+        width: 2.25rem;
+        height: 2.25rem;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+      }
+
+      html.dark .brand-logo {
+        filter: invert(1);
+        mix-blend-mode: screen;
+      }
+
+      .brand-name {
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.5rem 0.875rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        background-color: var(--bg-subtle);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: border-color 0.15s ease, color 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .btn-secondary:hover {
+        color: var(--text-primary);
+        border-color: var(--text-muted);
+      }
+
+      /* Main Layout */
+      main {
+        flex: 1;
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 3.5rem 1.5rem 5rem;
+      }
+
+      .meta-kicker {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+
+      .page-title {
+        font-size: clamp(2rem, 3.8vw, 3rem);
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+
+      .page-lead {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        max-width: 52rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .layout-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      @media (min-width: 960px) {
+        .layout-grid {
+          grid-template-columns: 260px 1fr;
+          align-items: start;
+        }
+      }
+
+      /* Sidebar Table of Contents & Summary Card */
+      .sidebar {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 960px) {
+        .sidebar {
+          position: sticky;
+          top: 6rem;
+        }
+      }
+
+      .summary-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.25rem;
+        font-size: 0.8rem;
+      }
+
+      .summary-card h2 {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+      }
+
+      .summary-row {
+        padding: 0.45rem 0;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      .summary-row:first-of-type {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .summary-label {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+      }
+
+      .summary-value {
+        font-weight: 500;
+        color: var(--text-primary);
+        word-break: break-word;
+      }
+
+      .summary-value a {
+        color: var(--text-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .toc-nav {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+      }
+
+      .toc-title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 0.65rem;
+        color: var(--text-primary);
+      }
+
+      .toc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+
+      .toc-list a {
+        font-size: 0.775rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        display: block;
+      }
+
+      .toc-list a:hover {
+        color: var(--text-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      /* Policy Sections */
+      .policy-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2.25rem;
+      }
+
+      .policy-section {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.75rem 2rem;
+        scroll-margin-top: 5.5rem;
+      }
+
+      .policy-section h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .policy-section p {
+        font-size: 0.925rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.9rem;
+      }
+
+      .policy-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      .policy-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        margin-top: 0.5rem;
+      }
+
+      .policy-list li {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        padding-left: 1rem;
+        border-left: 2px solid var(--border);
+      }
+
+      .policy-list li strong {
+        color: var(--text-primary);
+      }
+
+      .policy-section a {
+        color: var(--text-primary);
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      /* Footer */
+      footer {
+        width: 100%;
+        border-top: 1px solid var(--border);
+        background-color: var(--bg-subtle);
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.775rem;
+        color: var(--text-secondary);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--text-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <a href="./index.html" class="brand-link" aria-label="Haze Browser Home">
+          <img
+            src="./assets/aistudio/logo_20afc45f.png"
+            alt="Haze Browser Logo"
+            class="brand-logo"
+          />
+          <span class="brand-name font-display">Haze</span>
+        </a>
+
+        <div class="header-actions">
+          <a href="./index.html" class="btn-secondary">Back to Home</a>
+          <a href="./delete-account.html" class="btn-secondary">Delete Account</a>
+          <button type="button" id="theme-toggle" class="btn-secondary" aria-label="Toggle theme">
+            <span id="theme-label">Dark</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="meta-kicker font-mono">
+        <span>Official Privacy Policy</span>
+        <span aria-hidden="true">·</span>
+        <span>App: Haze Browser (com.aryandas.haze)</span>
+        <span aria-hidden="true">·</span>
+        <span>Effective Date: October 21, 2026</span>
+      </div>
+
+      <h1 class="page-title font-display">
+        Privacy Policy
+      </h1>
+
+      <p class="page-lead">
+        This Privacy Policy applies specifically to <strong>Haze Browser</strong> (also published as <strong>HAZE Browser</strong>, Android package identifier <code>com.aryandas.haze</code>, available for Android and Windows), developed and maintained by independent developer <strong>Aryan Das</strong> (contact: <a href="mailto:aryandas.original@gmail.com" style="color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px;">aryandas.original@gmail.com</a>). It comprehensively discloses how Haze Browser handles, stores, protects, and shares user data.
+      </p>
+
+      <div class="layout-grid">
+        <!-- Left Sidebar: App Identity & Quick Navigation -->
+        <aside class="sidebar" aria-label="Document summary and navigation">
+          <div class="summary-card">
+            <h2 class="font-display">Application Details</h2>
+            <div class="summary-row">
+              <span class="summary-label">App Name</span>
+              <span class="summary-value">Haze Browser (HAZE Browser)</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Android Package ID</span>
+              <span class="summary-value font-mono">com.aryandas.haze</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Platforms Supported</span>
+              <span class="summary-value">Android (7.0+) &amp; Windows</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Developer</span>
+              <span class="summary-value">Aryan Das (Independent Developer)</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Privacy Contact Email</span>
+              <span class="summary-value">
+                <a href="mailto:aryandas.original@gmail.com">aryandas.original@gmail.com</a>
+              </span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Account Deletion URL</span>
+              <span class="summary-value">
+                <a href="./delete-account.html">delete-account.html</a>
+              </span>
+            </div>
+          </div>
+
+          <nav class="toc-nav" aria-label="Table of contents">
+            <div class="toc-title font-display">Sections</div>
+            <ul class="toc-list">
+              <li><a href="#section-1">01. Zero-Telemetry Architecture</a></li>
+              <li><a href="#section-2">02. Data Collected &amp; Local Storage</a></li>
+              <li><a href="#section-3">03. Optional Google Cloud Sync</a></li>
+              <li><a href="#section-4">04. Device Permissions Explained</a></li>
+              <li><a href="#section-5">05. Data Sharing &amp; Third Parties</a></li>
+              <li><a href="#section-6">06. Security &amp; Encryption</a></li>
+              <li><a href="#section-7">07. Data Retention &amp; Deletion</a></li>
+              <li><a href="#section-8">08. Children's Privacy</a></li>
+              <li><a href="#section-9">09. GDPR &amp; CCPA Privacy Rights</a></li>
+              <li><a href="#section-10">10. Contact &amp; Updates</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Right Column: Full Policy Text -->
+        <div class="policy-content">
+          <section id="section-1" class="policy-section">
+            <h2 class="font-display">01. Core Privacy Principle &amp; Zero-Telemetry Architecture</h2>
+            <p>
+              <strong>Haze Browser</strong> is engineered from the ground up with a strict <strong>zero-telemetry, local-first architecture</strong>. Unlike conventional web browsers that continuously transmit browsing history, usage diagnostics, or crash reports to central servers, Haze Browser operates without developer-owned tracking infrastructure.
+            </p>
+            <ul class="policy-list">
+              <li>
+                <strong>Zero First-Party Telemetry:</strong> Haze Browser contains no background telemetry daemons, diagnostic beacons, pingbacks, or usage counters. No server logs of your browsing sessions exist because Haze operates without central user-tracking servers.
+              </li>
+              <li>
+                <strong>Zero Third-Party Analytics or Ad SDKs:</strong> The application is completely free of Google Firebase Analytics, Crashlytics, Adjust, AppsFlyer, Mixpanel, Facebook Graph SDK, or any behavioral profiling SDKs.
+              </li>
+              <li>
+                <strong>Zero Hardware / Advertising Identifiers:</strong> Haze Browser never queries or collects your Android Advertising ID (<code>AAID</code>), <code>IMEI</code>, hardware serial numbers, or device <code>MAC address</code>.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-2" class="policy-section">
+            <h2 class="font-display">02. Information Stored Locally on Your Device</h2>
+            <p>
+              To function as a full-featured web browser powered by a standalone custom-compiled Chromium Engine (Blink + V8), Haze Browser processes and stores the following user-generated data strictly locally within your device's private application sandbox:
+            </p>
+            <ul class="policy-list">
+              <li>
+                <strong>Browsing History, Bookmarks, Shortcuts &amp; Omnibox Index (<code>HazeDatabase</code>):</strong> Your visited URLs, page titles, custom bookmarks, homepage speed-dial shortcuts, and download queue records are stored locally in an on-device SQLite database (<code>/data/user/0/com.aryandas.haze/databases/</code>). This data never leaves your device unless you explicitly enable optional Cloud Sync.
+              </li>
+              <li>
+                <strong>Hardware-Encrypted Password Vault (<code>HazePasswordVault</code>):</strong> If you choose to save website login credentials in Haze Browser, they are encrypted on-device using hardware-backed <strong>AES-256-GCM</strong> keys generated and isolated inside the AndroidKeyStore (Trusted Execution Environment / StrongBox). Viewing or exporting saved credentials requires device biometric or PIN authentication.
+              </li>
+              <li>
+                <strong>Cookies, Web Cache &amp; Partitioned Web Storage:</strong> First-party cookies and HTTP cache files (RFC 7234) are stored locally so websites can maintain your login state. Third-party tracking cookies are blocked by default via the native C++17 <code>libhazeshield.so</code> engine. All <code>localStorage</code>, <code>sessionStorage</code>, and <code>IndexedDB</code> instances are strictly partitioned by origin.
+              </li>
+              <li>
+                <strong>Incognito / Private Browsing Sessions:</strong> Incognito tabs operate in an isolated in-memory context. When the last Incognito tab is closed, all associated cookies, DOM storage, and session artifacts are permanently purged from device memory.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-3" class="policy-section">
+            <h2 class="font-display">03. Optional Google Account Sign-In &amp; Cloud Backup Sync</h2>
+            <p>
+              Haze Browser can be used 100% offline/locally as a guest without creating an account or signing in. However, if you voluntarily choose to sign in using <strong>Google Sign-In</strong> (via Google Play Services Auth / Firebase Authentication) to synchronize your browser across devices:
+            </p>
+            <ul class="policy-list">
+              <li>
+                <strong>Account Identifiers Accessed:</strong> With your explicit consent, Haze Browser accesses your basic Google Account profile identifier (email address, display name, profile avatar URL, and Firebase Authentication UID) solely to authenticate your sync session.
+              </li>
+              <li>
+                <strong>Synchronized Data Scope:</strong> Only the specific browser categories you select—such as bookmarks, hierarchical bookmark folders, homepage shortcuts, search preferences, and ambient theme settings—are backed up to your personal Google Cloud / Firebase sync container.
+              </li>
+              <li>
+                <strong>No Developer Inspection or Monetization:</strong> Your synchronized cloud backup is used exclusively to restore your browser settings across your own devices and is never sold, analyzed, or shared with advertisers.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-4" class="policy-section">
+            <h2 class="font-display">04. Device Permissions Requested &amp; How They Are Used</h2>
+            <p>
+              Haze Browser adheres to Android zero-trust permission governance. Sensitive runtime permissions are requested only when you actively trigger a feature that requires them:
+            </p>
+            <ul class="policy-list">
+              <li>
+                <strong>Camera (<code>android.permission.CAMERA</code>):</strong> Used only when you launch the built-in QR Code Scanner or explicitly grant a website permission to use your camera (e.g., for WebRTC video calls). Camera video frames are processed locally in real time and are never recorded, stored, or transmitted to the developer.
+              </li>
+              <li>
+                <strong>Microphone (<code>android.permission.RECORD_AUDIO</code>):</strong> Used only when you tap the Voice Search button in the omnibox or explicitly grant a website microphone access for voice/video communication.
+              </li>
+              <li>
+                <strong>Notifications &amp; Foreground Media Playback (<code>POST_NOTIFICATIONS</code>, <code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code>):</strong> Used by <code>HazeMediaNotificationService</code> (<code>MediaSessionCompat</code>) to provide Lockscreen and Notification Shade playback controls, track metadata, and scrubber bars while audio or video is playing in the browser, as well as to display multi-threaded file download progress.
+              </li>
+              <li>
+                <strong>Biometric Authentication (<code>USE_BIOMETRIC</code> / <code>USE_FINGERPRINT</code>):</strong> Used locally via the Android system BiometricPrompt to verify your identity before unlocking or exporting credentials from <code>HazePasswordVault</code>. Haze Browser never accesses raw biometric fingerprint or facial data.
+              </li>
+              <li>
+                <strong>Internet &amp; Network State (<code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>):</strong> Required to load web pages, resolve domains, and detect offline status.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-5" class="policy-section">
+            <h2 class="font-display">05. Data Sharing &amp; Types of Parties Data Is Shared With</h2>
+            <p>
+              <strong>We do not sell, rent, trade, or share your personal or sensitive user data with third-party advertisers, data brokers, or analytics providers.</strong>
+            </p>
+            <p>
+              Data leaves your device only during direct, user-initiated actions with the following parties:
+            </p>
+            <ul class="policy-list">
+              <li>
+                <strong>Google LLC (Google Play Services / Firebase Authentication &amp; Cloud Sync):</strong> Only if you explicitly opt into Google Account Sign-In and Cloud Backup Sync, your account identifier and synced bookmarks/settings are transmitted over TLS 1.3 to Google's authentication and cloud storage infrastructure.
+              </li>
+              <li>
+                <strong>Websites &amp; Search Engines You Visit:</strong> When you navigate to a website or submit a search query to your chosen search engine (Google, DuckDuckGo, Bing, Yahoo, Ecosia, or Wikipedia), your network request is sent directly to that destination web server. Haze Browser automatically attaches <code>DNT: 1</code> (Do Not Track) and <code>Sec-GPC: 1</code> (Global Privacy Control) headers and strips known tracking parameters (<code>utm_*</code>, <code>fbclid</code>, <code>gclid</code>) to protect your privacy on third-party sites.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-6" class="policy-section">
+            <h2 class="font-display">06. Data Security &amp; Cryptographic Safeguards</h2>
+            <ul class="policy-list">
+              <li>
+                <strong>Encryption in Transit:</strong> All network connections enforce HTTPS / TLS 1.3 with cleartext HTTP traffic blocked by default in the Android runtime configuration.
+              </li>
+              <li>
+                <strong>Encryption at Rest:</strong> Saved credentials in <code>HazePasswordVault</code> are encrypted with hardware-isolated <strong>AES-256-GCM</strong> keys stored in the AndroidKeyStore.
+              </li>
+              <li>
+                <strong>Native C++17 Threat Filtering &amp; Sandboxing:</strong> Web content runs inside isolated multi-process Chromium <code>WebContents</code> sandboxes protected by <code>libhazeshield.so</code> (compiled with <code>-fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE -O3</code>), Canvas/WebGL anti-fingerprinting, and WebRTC LAN IP leak protection.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-7" class="policy-section">
+            <h2 class="font-display">07. Data Retention &amp; How to Delete Your Account and Data</h2>
+            <p>
+              You retain 100% ownership and control over your data at all times:
+            </p>
+            <ul class="policy-list">
+              <li>
+                <strong>Instant On-Device Deletion (0-Day Retention):</strong> You can permanently erase your browsing history, cached files, cookies, site permissions, and saved passwords at any time inside the app via <strong>Settings &rarr; Privacy Shield &rarr; Clear All Browsing Data</strong>, or by uninstalling Haze Browser.
+              </li>
+              <li>
+                <strong>In-App Account &amp; Cloud Sync Deletion:</strong> You can unlink your Google Account and permanently delete your cloud backup container at any time via <strong>Settings &rarr; Account &amp; Cloud Sync &rarr; Delete Account &amp; Cloud Backup</strong>.
+              </li>
+              <li>
+                <strong>Web / Email Account Deletion Request (Without the App Installed):</strong> If you have already uninstalled Haze Browser and wish to request deletion of your Firebase / Google Cloud Sync account and associated data, visit our dedicated <a href="./delete-account.html">Account &amp; Data Deletion Page (delete-account.html)</a> or email <a href="mailto:aryandas.original@gmail.com">aryandas.original@gmail.com</a>. Requests are processed within <strong>7 business days</strong>, after which <strong>0 bytes</strong> of user data are retained.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-8" class="policy-section">
+            <h2 class="font-display">08. Children's Privacy</h2>
+            <p>
+              Haze Browser is a general-audience web browser and is not directed to children under the age of 13 (or the applicable age of digital consent in your jurisdiction). We do not knowingly collect personal information from children. If you believe a child has created a Cloud Sync profile without parental consent, please contact us at <a href="mailto:aryandas.original@gmail.com">aryandas.original@gmail.com</a> and we will promptly delete the account and associated data.
+            </p>
+          </section>
+
+          <section id="section-9" class="policy-section">
+            <h2 class="font-display">09. Your Privacy Rights (GDPR, UK GDPR, CCPA / CPRA)</h2>
+            <p>
+              Depending on your jurisdiction, you have the right to access, correct, export, or erase your personal data, and to opt out of any sale or behavioral sharing of personal information:
+            </p>
+            <ul class="policy-list">
+              <li>
+                <strong>Right to Data Portability:</strong> Saved credentials in <code>HazePasswordVault</code> can be exported to a standard, unencrypted CSV file at any time on-device after passing biometric authentication.
+              </li>
+              <li>
+                <strong>Do Not Sell or Share:</strong> Haze Browser never sells or shares personal information for cross-context behavioral advertising and transmits <code>Sec-GPC: 1</code> automatically.
+              </li>
+              <li>
+                <strong>Zero Subprocessors:</strong> Aside from optional user-initiated Google Cloud Sync, Haze Browser engages zero third-party data subprocessors.
+              </li>
+            </ul>
+          </section>
+
+          <section id="section-10" class="policy-section">
+            <h2 class="font-display">10. Changes to This Policy &amp; Developer Contact Information</h2>
+            <p>
+              We may update this Privacy Policy periodically to reflect new browser features or regulatory requirements. The updated version will always be posted on this URL with a revised effective date.
+            </p>
+            <p>
+              If you have any questions, concerns, or requests regarding this Privacy Policy or Haze Browser's data practices, please contact the developer directly:
+            </p>
+            <ul class="policy-list">
+              <li><strong>Developer:</strong> Aryan Das (Independent Developer)</li>
+              <li><strong>Application:</strong> Haze Browser (<code>com.aryandas.haze</code>)</li>
+              <li><strong>Email:</strong> <a href="mailto:aryandas.original@gmail.com">aryandas.original@gmail.com</a></li>
+              <li><strong>GitHub Repository &amp; Issue Tracker:</strong> <a href="https://github.com/aryandas079/Haze" target="_blank" rel="noopener noreferrer">https://github.com/aryandas079/Haze</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <strong>Copyright (c) 2026 Aryan Das.</strong> · Haze Browser (<code class="font-mono">com.aryandas.haze</code>) · Licensed under Apache License 2.0.
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <span aria-hidden="true">·</span>
+          <a href="./privacy-policy.html">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="./delete-account.html">Delete Account</a>
+          <span aria-hidden="true">·</span>
+          <a href="mailto:aryandas.original@gmail.com">aryandas.original@gmail.com</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/aryandas079/Haze" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggleBtn = document.getElementById('theme-toggle');
+        var themeLabel = document.getElementById('theme-label');
+
+        function applyTheme(dark) {
+          if (dark) {
+            root.classList.add('dark');
+            if (themeLabel) themeLabel.textContent = 'Light';
+          } else {
+            root.classList.remove('dark');
+            if (themeLabel) themeLabel.textContent = 'Dark';
+          }
+        }
+
+        var isDark = false;
+        try {
+          var saved = localStorage.getItem('haze_theme');
+          if (saved === 'dark' || saved === 'light') {
+            isDark = saved === 'dark';
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            isDark = true;
+          }
+        } catch (e) {}
+
+        applyTheme(isDark);
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function () {
+            isDark = !isDark;
+            applyTheme(isDark);
+            try {
+              localStorage.setItem('haze_theme', isDark ? 'dark' : 'light');
+            } catch (e) {}
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
