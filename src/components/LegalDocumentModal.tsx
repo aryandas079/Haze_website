@@ -161,15 +161,23 @@ export const LegalDocumentModal: React.FC<LegalDocumentModalProps> = ({
               </div>
 
               <div className="mt-12 pt-6 border-t border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-neutral-600 dark:text-neutral-400">
-                <div>
-                  <span>Maintained by Aryan Das · </span>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span>Maintained by Aryan Das</span>
+                  <span aria-hidden="true">·</span>
+                  <a
+                    href="mailto:aryandas.original@gmail.com"
+                    className="font-medium text-neutral-900 dark:text-white underline underline-offset-4 hover:text-neutral-700 dark:hover:text-neutral-300"
+                  >
+                    aryandas.original@gmail.com
+                  </a>
+                  <span aria-hidden="true">·</span>
                   <a
                     href="https://github.com/aryandas079/Haze/issues"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium text-neutral-900 dark:text-white underline underline-offset-4 hover:text-neutral-700 dark:hover:text-neutral-300"
                   >
-                    GitHub Issues & Security Advisories
+                    GitHub Issues
                   </a>
                 </div>
                 <div className="font-mono text-neutral-600 dark:text-neutral-400">

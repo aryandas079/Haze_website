@@ -54,7 +54,8 @@ export const LEGAL_DOCUMENTS: Record<string, LegalDocument> = {
       {
         heading: '06. Cloud Synchronization Boundaries',
         body: [
-          'Cloud sync in Haze is entirely opt-in. When enabled via Google Account Authentication (play-services-auth), your browser settings, bookmarks, and custom shortcuts are synchronized directly to your personal Google Cloud / Firebase container. No intermediary proxy or developer-owned relay inspects or relays your synchronized data.'
+          'Cloud sync in Haze is entirely opt-in. When enabled via Google Account Authentication (play-services-auth), your browser settings, bookmarks, and custom shortcuts are synchronized directly to your personal Google Cloud / Firebase container. No intermediary proxy or developer-owned relay inspects or relays your synchronized data.',
+          'For any privacy or data inquiries, contact the maintainer directly at aryandas.original@gmail.com.'
         ]
       }
     ]
@@ -148,7 +149,7 @@ export const LEGAL_DOCUMENTS: Record<string, LegalDocument> = {
       {
         heading: '03. Responsible Vulnerability Disclosure',
         body: [
-          'Report suspected security vulnerabilities directly to the maintainer via GitHub Private Security Advisories at github.com/aryandas079/Haze.',
+          'Report suspected security vulnerabilities directly to the maintainer at aryandas.original@gmail.com or via GitHub Private Security Advisories at github.com/aryandas079/Haze.',
           'Please include reproducible test cases, Android OS version, device model, and scrubbed logcat output. Inquiries receive an initial acknowledgment within 48 hours, followed by remediation updates.'
         ]
       }
@@ -170,7 +171,7 @@ export const LEGAL_DOCUMENTS: Record<string, LegalDocument> = {
       {
         heading: '02. Right to Erasure ("Forget Me")',
         body: [
-          'Instantly delete browsing history, cached web files, saved cookies, site permissions, and encrypted passwords on-device via Settings > Privacy Shield > Clear All Browsing Data.'
+          'Instantly delete browsing history, cached web files, saved cookies, site permissions, and encrypted passwords on-device via Settings > Privacy Shield > Clear All Browsing Data, or submit an account deletion inquiry to aryandas.original@gmail.com.'
         ]
       },
       {
@@ -240,7 +241,7 @@ export const LEGAL_DOCUMENTS: Record<string, LegalDocument> = {
       {
         heading: '04. DMCA & Copyright Inquiries',
         body: [
-          'Notices regarding copyright infringement or licensing conflicts can be filed directly through GitHub Issues (github.com/aryandas079/Haze/issues) or by contacting the maintainer.'
+          'Notices regarding copyright infringement or licensing conflicts can be sent directly to aryandas.original@gmail.com or filed through GitHub Issues (github.com/aryandas079/Haze/issues).'
         ]
       }
     ]
@@ -293,6 +294,7 @@ export const LEGAL_DOCUMENTS: Record<string, LegalDocument> = {
         heading: '02. Lead Architect & Maintainer',
         body: [
           'Designed, architected, and maintained by Aryan Das.',
+          'Email: aryandas.original@gmail.com',
           'GitHub: https://github.com/aryandas079',
           'LinkedIn: https://linkedin.com/in/iam-aryandas',
           'Instagram: https://instagram.com/iam_aryandas'

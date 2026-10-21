@@ -21,6 +21,10 @@ import { LegalDocumentModal } from './components/LegalDocumentModal';
 
 const AUTHOR_LINKS = [
   {
+    label: 'aryandas.original@gmail.com',
+    href: 'mailto:aryandas.original@gmail.com',
+  },
+  {
     label: 'GitHub Repository',
     href: 'https://github.com/aryandas079/Haze',
   },
