@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Account &amp; Associated Data — Haze Browser</title>
+    <meta
+      name="description"
+      content="Official instructions to request deletion of your Haze Browser (com.aryandas.haze) account and associated data, maintained by Aryan Das."
+    />
+    <link rel="icon" type="image/png" href="./assets/aistudio/logo_20afc45f.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-subtle: #fafafa;
+        --bg-card: #f8f8f8;
+        --text-primary: #0a0a0a;
+        --text-secondary: #404040;
+        --text-muted: #525252;
+        --border: #e5e5e5;
+        --btn-bg: #0a0a0a;
+        --btn-text: #ffffff;
+        --btn-hover: #262626;
+        --input-bg: #ffffff;
+      }
+
+      html.dark {
+        --bg: #0a0a0a;
+        --bg-subtle: #121212;
+        --bg-card: #141414;
+        --text-primary: #ffffff;
+        --text-secondary: #d4d4d4;
+        --text-muted: #a3a3a3;
+        --border: #262626;
+        --btn-bg: #ffffff;
+        --btn-text: #0a0a0a;
+        --btn-hover: #e5e5e5;
+        --input-bg: #0a0a0a;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1, h2, h3, .font-display {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Header */
+      header {
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+        background-color: var(--bg);
+      }
+
+      .header-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        height: 4.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .brand-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: var(--text-primary);
+      }
+
+      .brand-logo {
+        width: 2.25rem;
+        height: 2.25rem;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+      }
+
+      html.dark .brand-logo {
+        filter: invert(1);
+        mix-blend-mode: screen;
+      }
+
+      .brand-name {
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.875rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        background-color: var(--bg-subtle);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: border-color 0.15s ease, color 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .btn-secondary:hover {
+        color: var(--text-primary);
+        border-color: var(--text-muted);
+      }
+
+      /* Main Container */
+      main {
+        flex: 1;
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 3.5rem 1.5rem 5rem;
+      }
+
+      .meta-kicker {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+
+      .page-title {
+        font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+
+      .page-lead {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        max-width: 46rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 960px) {
+        .content-grid {
+          grid-template-columns: 7fr 5fr;
+          align-items: start;
+        }
+      }
+
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.75rem;
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .card-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+      }
+
+      .step-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.875rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .step-num {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        padding-top: 0.15rem;
+        flex-shrink: 0;
+      }
+
+      .data-table {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .data-row {
+        padding: 1rem 0;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .data-row:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .data-row:last-child {
+        padding-bottom: 0;
+      }
+
+      .data-row-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .data-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .data-badge {
+        font-size: 0.75rem;
+        color: var(--text-primary);
+      }
+
+      .data-desc {
+        font-size: 0.825rem;
+        color: var(--text-secondary);
+      }
+
+      /* Form Card */
+      .form-group {
+        margin-bottom: 1.125rem;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.775rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 0.4rem;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        padding: 0.65rem 0.85rem;
+        font-size: 0.85rem;
+        font-family: inherit;
+        color: var(--text-primary);
+        background-color: var(--input-bg);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        outline: none;
+        transition: border-color 0.15s ease;
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: var(--text-primary);
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65rem;
+        margin: 1rem 0 1.25rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .checkbox-row input {
+        margin-top: 0.25rem;
+        accent-color: var(--text-primary);
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.25rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--btn-text);
+        background-color: var(--btn-bg);
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s ease;
+      }
+
+      .btn-primary:hover {
+        opacity: 0.9;
+      }
+
+      .notice-box {
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.775rem;
+        color: var(--text-muted);
+      }
+
+      .notice-box a,
+      .step-item a {
+        color: var(--text-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      /* Footer */
+      footer {
+        width: 100%;
+        border-top: 1px solid var(--border);
+        background-color: var(--bg-subtle);
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.775rem;
+        color: var(--text-secondary);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--text-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <a href="./index.html" class="brand-link" aria-label="Haze Browser Home">
+          <img
+            src="./assets/aistudio/logo_20afc45f.png"
+            alt="Haze Browser Logo"
+            class="brand-logo"
+          />
+          <span class="brand-name font-display">Haze</span>
+        </a>
+
+        <div class="header-actions">
+          <a href="./index.html" class="btn-secondary">Back to Home</a>
+          <button type="button" id="theme-toggle" class="btn-secondary" aria-label="Toggle theme">
+            <span id="theme-label">Dark</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="meta-kicker font-mono">
+        <span>Haze Browser</span>
+        <span aria-hidden="true">·</span>
+        <span>Package: com.aryandas.haze</span>
+        <span aria-hidden="true">·</span>
+        <span>Developer: Aryan Das</span>
+      </div>
+
+      <h1 class="page-title font-display">
+        Request Account &amp; Associated Data Deletion
+      </h1>
+
+      <p class="page-lead">
+        This page provides official instructions for users of <strong>Haze Browser</strong> (<code class="font-mono">com.aryandas.haze</code>), developed and maintained by <strong>Aryan Das</strong>, to request deletion of their optional Google / Firebase Cloud Sync account and all associated data.
+      </p>
+
+      <div class="content-grid">
+        <div class="stack">
+          <!-- Card 1: How to Request Deletion -->
+          <section class="card" aria-labelledby="steps-heading">
+            <div class="card-header">
+              <h2 id="steps-heading" class="card-title font-display">
+                01. How to Request Account &amp; Data Deletion
+              </h2>
+              <span class="font-mono" style="font-size: 0.75rem; color: var(--text-muted);">
+                2 Methods Available
+              </span>
+            </div>
+
+            <ol class="step-list">
+              <li class="step-item">
+                <span class="step-num font-mono">Method A.</span>
+                <div>
+                  <strong>Request via Web / Email (Without the App Installed):</strong>
+                  Submit your request using the form on this page or send an email directly to
+                  <a href="mailto:aryandas.dev@gmail.com?subject=Account%20Deletion%20Request%20-%20Haze%20Browser%20(com.aryandas.haze)">aryandas.dev@gmail.com</a>
+                  from the Google Account email address associated with your Haze Browser profile, with the subject line <code class="font-mono">"Account Deletion Request - Haze Browser"</code>.
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num font-mono">Method B.</span>
+                <div>
+                  <strong>Delete Directly Inside Haze Browser (Android App):</strong>
+                  Open <strong>Haze Browser</strong>, tap the bottom <strong>Menu</strong> icon, navigate to <strong>Settings &rarr; Account &amp; Cloud Sync</strong>, and select <strong>Delete Account &amp; Cloud Backup</strong>. To wipe local device storage, go to <strong>Settings &rarr; Privacy Shield &rarr; Clear All Browsing Data</strong>.
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num font-mono">Method C.</span>
+                <div>
+                  <strong>Revoke Google OAuth Access Anytime:</strong>
+                  You can also revoke Haze Browser's Google Sign-In authorization directly at
+                  <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">myaccount.google.com/permissions</a>.
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Card 2: Data Deleted, Data Retained & Processing Time -->
+          <section class="card" aria-labelledby="retention-heading">
+            <div class="card-header">
+              <h2 id="retention-heading" class="card-title font-display">
+                02. Data Deleted, Data Retained &amp; Processing Time
+              </h2>
+              <span class="font-mono" style="font-size: 0.75rem; color: var(--text-muted);">
+                0-Day Telemetry
+              </span>
+            </div>
+
+            <div class="data-table">
+              <div class="data-row">
+                <div class="data-row-top">
+                  <span class="data-label">Firebase / Google Account &amp; Cloud Sync Data</span>
+                  <span class="data-badge font-mono">Permanently Deleted</span>
+                </div>
+                <p class="data-desc">
+                  Includes your Firebase Authentication user record (UID, email address, display name) and all synchronized cloud backup records (bookmarks, folder trees, custom homepage shortcuts, browser preferences, and theme selections).
+                </p>
+              </div>
+
+              <div class="data-row">
+                <div class="data-row-top">
+                  <span class="data-label">On-Device Browsing History &amp; Password Vault</span>
+                  <span class="data-badge font-mono">Deleted Immediately (0-Day)</span>
+                </div>
+                <p class="data-desc">
+                  Local SQLite databases (<code class="font-mono">HazeDatabase</code>), cached web files, cookies, and hardware-encrypted credentials (<code class="font-mono">HazePasswordVault</code>) reside strictly on your device and are erased immediately when cleared in-app or when the app is uninstalled.
+                </p>
+              </div>
+
+              <div class="data-row">
+                <div class="data-row-top">
+                  <span class="data-label">Data Retained After Deletion</span>
+                  <span class="data-badge font-mono">None (0 Bytes Retained)</span>
+                </div>
+                <p class="data-desc">
+                  Haze Browser operates with zero first-party telemetry, zero analytics SDKs, and zero server logs. No personal information, anonymized identifiers, or backup copies are retained after your deletion request is processed.
+                </p>
+              </div>
+
+              <div class="data-row">
+                <div class="data-row-top">
+                  <span class="data-label">Expected Processing Time</span>
+                  <span class="data-badge font-mono">Within 7 Business Days</span>
+                </div>
+                <p class="data-desc">
+                  In-app deletions occur instantaneously. Email and web deletion requests are verified and processed by developer Aryan Das within <strong>7 business days</strong>, followed by a confirmation email once deletion is complete.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column: Deletion Request Mailto Generator Form -->
+        <aside class="card" aria-labelledby="form-heading">
+          <div class="card-header">
+            <h2 id="form-heading" class="card-title font-display">
+              Submit Deletion Request
+            </h2>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-muted);">
+              com.aryandas.haze
+            </span>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+            Complete this form to generate an official account and data deletion request email to the developer (<strong>aryandas.dev@gmail.com</strong>).
+          </p>
+
+          <form id="delete-form">
+            <div class="form-group">
+              <label for="account-email" class="form-label">
+                Google Account Email Address
+              </label>
+              <input
+                id="account-email"
+                type="email"
+                required
+                placeholder="you@gmail.com"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="deletion-scope" class="form-label">
+                Request Scope
+              </label>
+              <select id="deletion-scope" class="form-select">
+                <option value="Delete Account and All Associated Cloud Sync Data">
+                  Delete Account &amp; All Associated Cloud Sync Data
+                </option>
+                <option value="Delete Cloud Sync Backup Data Only (Keep Account)">
+                  Delete Cloud Sync Backup Data Only (Keep Account)
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="additional-notes" class="form-label">
+                Additional Notes (Optional)
+              </label>
+              <textarea
+                id="additional-notes"
+                rows="3"
+                placeholder="Optional details..."
+                class="form-textarea"
+              ></textarea>
+            </div>
+
+            <label class="checkbox-row">
+              <input id="confirm-checkbox" type="checkbox" required />
+              <span>
+                I confirm that I am the owner of this account and request permanent deletion of my Haze Browser account and associated cloud data.
+              </span>
+            </label>
+
+            <button type="submit" class="btn-primary">
+              Send Deletion Request Email
+            </button>
+          </form>
+
+          <div class="notice-box">
+            Direct email contact:
+            <a href="mailto:aryandas.dev@gmail.com?subject=Account%20Deletion%20Request%20-%20Haze%20Browser%20(com.aryandas.haze)">
+              aryandas.dev@gmail.com
+            </a>
+            · Processed within 7 business days.
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <strong>Copyright (c) 2026 Aryan Das.</strong> · Haze Browser (<code class="font-mono">com.aryandas.haze</code>) · Licensed under Apache License 2.0.
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/aryandas079/Haze" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/aryandas079/Haze/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggleBtn = document.getElementById('theme-toggle');
+        var themeLabel = document.getElementById('theme-label');
+
+        function applyTheme(dark) {
+          if (dark) {
+            root.classList.add('dark');
+            if (themeLabel) themeLabel.textContent = 'Light';
+          } else {
+            root.classList.remove('dark');
+            if (themeLabel) themeLabel.textContent = 'Dark';
+          }
+        }
+
+        var isDark = false;
+        try {
+          var saved = localStorage.getItem('haze_theme');
+          if (saved === 'dark' || saved === 'light') {
+            isDark = saved === 'dark';
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            isDark = true;
+          }
+        } catch (e) {}
+
+        applyTheme(isDark);
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function () {
+            isDark = !isDark;
+            applyTheme(isDark);
+            try {
+              localStorage.setItem('haze_theme', isDark ? 'dark' : 'light');
+            } catch (e) {}
+          });
+        }
+
+        var form = document.getElementById('delete-form');
+        if (form) {
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var email = document.getElementById('account-email').value.trim();
+            var scope = document.getElementById('deletion-scope').value;
+            var notes = document.getElementById('additional-notes').value.trim();
+            if (!email) return;
+
+            var subject = encodeURIComponent(
+              'Account Deletion Request - Haze Browser (com.aryandas.haze)'
+            );
+            var body = encodeURIComponent(
+              'Application: Haze Browser (com.aryandas.haze)\n' +
+                'Developer: Aryan Das\n' +
+                'Account Email to Delete: ' + email + '\n' +
+                'Deletion Scope: ' + scope + '\n' +
+                'Additional Notes: ' + (notes || 'None') + '\n\n' +
+                'Please permanently delete my Firebase / Google Cloud Sync account and associated data within 7 business days.'
+            );
+
+            window.location.href =
+              'mailto:aryandas.dev@gmail.com?subject=' + subject + '&body=' + body;
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
